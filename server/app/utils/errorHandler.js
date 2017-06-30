@@ -1,4 +1,4 @@
-module.exports = function(err, req, res) {
+module.exports = function(err, req, res, next) {
     var message;
 
     if (err.code && (err.code === 11000 || err.code === 11001)) {  // duplicate entry mongodb error
