@@ -1,0 +1,187 @@
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.wrapper {
+  padding-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.main {
+  position: relative;
+  padding: 64px 0 90px 0;
+  min-height: 100%;
+}
+
+/* animation */
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  margin-left: 5px;
+  top: 2px;
+
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+/* navbar */
+
+.navbar-default .navbar-brand {
+  color: #0a6ebd !important;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: bold;
+}
+
+nav .dropdown-menu .glyphicon {
+  margin-right: 10px;
+}
+
+.user {
+  /*float: left;*/
+  /*padding: 11px 0;*/
+  /*width: 40px;*/
+}
+
+/* home */
+
+.banner {
+  background: #0a6ebd;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.banner h1 {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: bold;
+  color: #fff;
+}
+
+.banner p {
+  font-weight: 300;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.banner .glyphicon {
+  font-size: 36px;
+}
+
+.features {
+  padding: 40px 0;
+}
+
+.features h2 {
+  font-size: 26px;
+}
+
+.features h2 .glyphicon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.features {
+  text-align: justify;
+}
+
+/* footer */
+
+.footer {
+  border-top: 1px solid #E5E5E5;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* books */
+
+.bookcard img {
+  margin: 0 auto;
+}
+
+.bookcard p {
+  margin-bottom: 5px;
+}
+
+/* dashboard */
+
+.book-field {
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+.book-form {
+  margin-bottom: 20px;
+}
+
+/* new book */
+
+.select-wrapper {
+  margin-bottom: 20px;
+}
+
+.select-wrapper button {
+  vertical-align: top;
+}
+
+.Select {
+  display: inline-block;
+  margin-right: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.Select-value {
+  padding-right: 80px;
+}
+
+/* books */
+
+.book h4, .book p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book img {
+  border: 1px solid #e5e5e5;
+  height: 190px;
+}
