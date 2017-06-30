@@ -39,6 +39,10 @@ module.exports = function() {
 
     require('../app/routes/router.js')(app);
 
+    app.get('/favicon.ico', function(req, res) {
+        res.status(204).send();
+    });
+
     app.use(express.static('./build'));
 
     app.get('/*', function(req, res) {
