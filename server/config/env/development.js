@@ -1,4 +1,4 @@
 module.exports = {
-    db: 'mongodb://localhost/books',
+    db: 'mongodb://localhost/bookswap',
     jwtSecret: 'devsecretkey'
 };
