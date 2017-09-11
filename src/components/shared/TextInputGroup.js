@@ -78,16 +78,18 @@ export default class TextInputGroup extends Component {
         return {valid: true, error: ''};
     }
     render() {
+        const { name, type, placeholder } = this.props;
+        const { validationState, value, error, pristine } = this.state;
         return (
-            <FormGroup controlId={'form-' + this.props.name}
-                       validationState={this.state.validationState}>
-                {this.props.label && <ControlLabel>{this.props.label}</ControlLabel>}
-                <FormControl type={this.props.type}
-                             name={this.props.name}
-                             placeholder={this.props.placeholder}
-                             value={this.state.value}
+            <FormGroup controlId={'form-' + name}
+                       validationState={validationState}>
+                {label && <ControlLabel>{label}</ControlLabel>}
+                <FormControl type={type}
+                             name={name}
+                             placeholder={placeholder}
+                             value={value}
                              onChange={this.handleChange.bind(this)}/>
-                {this.state.error && !this.state.pristine && <span className="help-block small">{this.state.error}</span>}
+                {error && !pristine && <span className="help-block small">{error}</span>}
             </FormGroup>
         )
     }

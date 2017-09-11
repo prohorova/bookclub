@@ -102,28 +102,30 @@ export default class FormWithValidation extends Component {
         e.preventDefault();
     }
     render() {
+        const { successMessage, errorMessage, loading, valid } = this.state;
+        const { isBlockButton, buttonCaption } = this.props;
+
         return (
             <Form onSubmit={this.handleSubmit.bind(this)}>
 
                 <input type="email" name="email" className="hidden"/>       {/* fuck you autocomplete */}
                 <input type="password" name="password" className="hidden"/>
 
-                {this.state.successMessage && <Alert bsStyle="success">{this.state.successMessage}</Alert>}
+                {successMessage && <Alert bsStyle="success">{successMessage}</Alert>}
 
-                {this.state.errorMessage && <Alert bsStyle="danger">{this.state.errorMessage}</Alert>}
+                {errorMessage && <Alert bsStyle="danger">{errorMessage}</Alert>}
 
                 {this.fieldComponents}
 
                 <FormGroup>
                     <Button type="submit"
                             bsStyle="success"
-                            block={this.props.isBlockButton}
-                            disabled={this.state.loading || !this.state.valid}>
-                        {this.props.buttonCaption}
-                        {this.state.loading && <Glyphicon glyph="glyphicon glyphicon-repeat" className="loader"/>}
+                            block={isBlockButton}
+                            disabled={loading || !valid}>
+                        {buttonCaption}
+                        {loading && <Glyphicon glyph="glyphicon glyphicon-repeat" className="loader"/>}
                     </Button>
                 </FormGroup>
-
             </Form>
         )
     }
