@@ -14,39 +14,42 @@ const NavigationComponent = ({user, logout}) => {
         );
     }
     return (
-        <Navbar fixedTop>
+        <Navbar fixedTop collapseOnSelect>
             <Navbar.Header>
                 <Navbar.Brand>
                     <Link to="/">Bookswap</Link>
                 </Navbar.Brand>
+                <Navbar.Toggle />
             </Navbar.Header>
-            {user && <Nav>
-                <LinkContainer to="/books">
-                    <NavItem eventKey={4}>Books</NavItem>
-                </LinkContainer>
-            </Nav>}
-            {!user && <Nav pullRight>
-                <LinkContainer to="/login">
-                    <NavItem eventKey={1}>Login</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/register">
-                    <NavItem eventKey={2}>Register</NavItem>
-                </LinkContainer>
-            </Nav>}
-            {user && <Nav pullRight>
-                <NavDropdown eventKey={3} title={navTitle} id="nav-dropdown">
-                    <LinkContainer to="dashboard">
-                        <MenuItem eventKey={3.1}><Glyphicon glyph="user"/>Dashboard</MenuItem>
+            <Navbar.Collapse>
+                {user && <Nav>
+                    <LinkContainer to="/books">
+                        <NavItem eventKey={4}>Books</NavItem>
                     </LinkContainer>
-                    <LinkContainer to="profile">
-                        <MenuItem eventKey={3.2}><Glyphicon glyph="cog"/>Settings</MenuItem>
+                </Nav>}
+                {!user && <Nav pullRight>
+                    <LinkContainer to="/login">
+                        <NavItem eventKey={1}>Login</NavItem>
                     </LinkContainer>
-                    <MenuItem divider />
-                    <MenuItem eventKey={3.3} onClick={logout}>
-                        <Glyphicon glyph="log-out"/>Logout
-                    </MenuItem>
-                </NavDropdown>
-            </Nav>}
+                    <LinkContainer to="/register">
+                        <NavItem eventKey={2}>Register</NavItem>
+                    </LinkContainer>
+                </Nav>}
+                {user && <Nav pullRight>
+                    <NavDropdown eventKey={3} title={navTitle} id="nav-dropdown">
+                        <LinkContainer to="dashboard">
+                            <MenuItem eventKey={3.1}><Glyphicon glyph="user"/>Dashboard</MenuItem>
+                        </LinkContainer>
+                        <LinkContainer to="profile">
+                            <MenuItem eventKey={3.2}><Glyphicon glyph="cog"/>Settings</MenuItem>
+                        </LinkContainer>
+                        <MenuItem divider />
+                        <MenuItem eventKey={3.3} onClick={logout}>
+                            <Glyphicon glyph="log-out"/>Logout
+                        </MenuItem>
+                    </NavDropdown>
+                </Nav>}
+            </Navbar.Collapse>
         </Navbar>
     )
 };
