@@ -78,7 +78,7 @@ export default class TextInputGroup extends Component {
         return {valid: true, error: ''};
     }
     render() {
-        const { name, type, placeholder } = this.props;
+        const { name, type, placeholder, label } = this.props;
         const { validationState, value, error, pristine } = this.state;
         return (
             <FormGroup controlId={'form-' + name}
