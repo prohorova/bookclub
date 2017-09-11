@@ -49,17 +49,18 @@ export default class NewBook extends Component {
         this.setState({book: value});
     }
     render() {
+        const { book, loading } = this.state;
         return (
             <div className="select-wrapper">
 
                 <Select.Async
                     name="new-book"
-                    value={this.state.book}
+                    value={book}
                     loadOptions={this.getOptions.bind(this)}
                     onChange={this.handleChange.bind(this)}/>
 
                 <Button bsStyle="primary"
-                        disabled={this.state.book === null || this.state.loading}
+                        disabled={book === null || loading}
                         onClick={this.submit.bind(this)}>
                     Add book
                 </Button>

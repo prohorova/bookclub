@@ -53,7 +53,8 @@ class Dashboard extends Component {
             })
     }
     render() {
-        const books = this.props.books.map(book => {
+        const { books, incRequests, outRequests } = this.props;
+        const booksEl = books.map(book => {
             return (
                 <Col className="book" xs={6} sm={6} md={4} key={book._id}>
                     <Thumbnail className="bookcard" src={book.img}>
@@ -67,9 +68,9 @@ class Dashboard extends Component {
             )
         });
 
-        let incRequests = '';
-        if (this.props.incRequests.length) {
-            incRequests = (
+        let incRequestsEl;
+        if (incRequests.length) {
+            incRequestsEl = (
                 <div>
                     <h4>Incoming</h4>
                     <Table>
@@ -84,7 +85,7 @@ class Dashboard extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.props.incRequests.map(request => {
+                        {incRequests.map(request => {
                             return (
                                 <tr key={request._id} className={classNames({
                                         'success': request.status === 'approved',
@@ -115,9 +116,9 @@ class Dashboard extends Component {
             );
         }
 
-        let outRequests = '';
-        if (this.props.outRequests.length) {
-            outRequests = (
+        let outRequestsEl;
+        if (outRequests.length) {
+            outRequestsEl = (
                 <div>
                     <h4>Outcoming</h4>
                     <Table>
@@ -130,7 +131,7 @@ class Dashboard extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.props.outRequests.map(request => {
+                        {outRequests.map(request => {
                             return (
                                 <tr key={request._id} className={classNames({
                                         'success': request.status === 'approved',
@@ -149,19 +150,25 @@ class Dashboard extends Component {
             )
         }
 
+        let noRequestsEl;
+        if (!incRequests.concat(outRequests).length) {
+            noRequestsEl = <p>No requests yet</p>;
+        }
+
         return (
             <div className="container wrapper">
                 <h2>Your Books</h2>
                 <NewBook onAddBook={this.handleAddBook.bind(this)}/>
                 <div className="books">
                     <Row>
-                        {books}
+                        {booksEl}
                     </Row>
                 </div>
 
                 <h2>Your requests</h2>
-                {incRequests}
-                {outRequests}
+                {noRequestsEl}
+                {incRequestsEl}
+                {outRequestsEl}
             </div>
         )
     }

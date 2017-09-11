@@ -9,18 +9,18 @@ import Dashboard from './Dashboard';
 import LoggedInRoute from '../utils/LoggedInRoute';
 import LoggedOutRoute from '../utils/LoggedOutRoute';
 
-export default class Main extends Component {
-    render() {
-        return (
-            <div>
-                <Route exact path="/" component={Home} />
-                <Route path="/login" component={LoggedOutRoute(Login)} />
-                <Route path="/register" component={LoggedOutRoute(Register)} />
-                <Route path="/profile" component={LoggedInRoute(Profile)} />
-                <Route path="/books" component={LoggedInRoute(Books)} />
-                <Route path="/dashboard" component={LoggedInRoute(Dashboard)}/>
-            </div>
-        )
-    }
-}
+const Main = (props) => (
+    <div>
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={LoggedOutRoute(Login)} />
+        <Route path="/register" component={LoggedOutRoute(Register)} />
+        <Route path="/profile" component={LoggedInRoute(Profile)} />
+        <Route path="/books" component={LoggedInRoute(Books)} />
+        <Route path="/dashboard" component={LoggedInRoute(Dashboard)}/>
+    </div>
+);
+
+export default Main;
+
+
 

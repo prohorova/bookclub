@@ -29,39 +29,45 @@ class Books extends Component {
             })
     }
     render() {
-        const books = this.props.books.map(book => {
-            let ownerInfo = `${book.owner.name}`;
-            if (book.owner.country || book.owner.town) {
-                ownerInfo += ` ( ${book.owner.country} ${book.owner.town} )`;
-            }
+        const { books, user, outRequests } = this.props;
+        let booksEl;
+        if (books.length) {
+            booksEl = books.map(book => {
+                let ownerInfo = `${book.owner.name}`;
+                if (book.owner.country || book.owner.town) {
+                    ownerInfo += ` ( ${book.owner.country} ${book.owner.town} )`;
+                }
 
-            const isRequested = _.some(this.props.outRequests, request => {
-                return request.from._id === this.props.user._id && request.book._id === book._id;
+                const isRequested = _.some(outRequests, request => {
+                    return request.from._id === user._id && request.book._id === book._id;
+                });
+
+                return (
+                    <Col className="book" xs={6} sm={6} md={4} key={book._id}>
+                        <Thumbnail className="bookcard" src={book.img}>
+                            <h4>{book.title}</h4>
+                            <p className="small text-muted">{book.authors.join(', ')}</p>
+                            <p><b>Owner: </b>{ownerInfo}</p>
+                            <p>
+                                {!isRequested &&
+                                <Button bsStyle="primary" onClick={this.requestBook.bind(this, book._id)}>Request</Button>}
+
+                                {isRequested &&
+                                <Button bsStyle="primary" disabled>Already requested</Button>}
+                            </p>
+                        </Thumbnail>
+                    </Col>
+                )
             });
-
-            return (
-                <Col className="book" xs={6} sm={6} md={4} key={book._id}>
-                    <Thumbnail className="bookcard" src={book.img}>
-                        <h4>{book.title}</h4>
-                        <p className="small text-muted">{book.authors.join(', ')}</p>
-                        <p><b>Owner: </b>{ownerInfo}</p>
-                        <p>
-                            {!isRequested &&
-                            <Button bsStyle="primary" onClick={this.requestBook.bind(this, book._id)}>Request</Button>}
-
-                            {isRequested &&
-                            <Button bsStyle="primary" disabled>Already requested</Button>}
-                        </p>
-                    </Thumbnail>
-                </Col>
-            )
-        });
+        } else {
+            booksEl = <p>No books to borrow yet</p>
+        }
 
         return (
             <div className="container wrapper">
                 <div className="books">
                     <Row>
-                        {books}
+                        {booksEl}
                     </Row>
                 </div>
             </div>
