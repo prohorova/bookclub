@@ -11,7 +11,7 @@ class Books extends Component {
         this.fetchOutRequests();
     }
     fetchBooks() {
-        api.request('books/all', 'get')
+        api.request('books', 'get')
             .then(res => {
                 this.props.fetchBooks(res.data);
             })

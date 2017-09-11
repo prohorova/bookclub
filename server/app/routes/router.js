@@ -19,15 +19,15 @@ module.exports = function(app) {
 
     app.param('bookId', booksController.getBook);
 
-    app.get('/books/all', usersController.isAuthenticated, booksController.list);
+    app.route('/books')
+        .get(usersController.isAuthenticated, booksController.list)
+        .post(usersController.isAuthenticated, booksController.add);
+
+    app.delete('/books/:bookId', usersController.isAuthenticated, booksController.canDelete, booksController.delete);
 
     app.get('/books/personal', usersController.isAuthenticated, booksController.listPersonal);
 
     app.get('/books/find', booksController.search);
-
-    app.post('/books/add', usersController.isAuthenticated, booksController.add);
-
-    app.get('/books/delete/:bookId', usersController.isAuthenticated, booksController.canDelete, booksController.delete);
 
     // requests
 

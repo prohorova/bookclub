@@ -14,7 +14,7 @@ class Dashboard extends Component {
         this.fetchIncRequests();
     }
     deleteBook(id) {
-        api.request(`books/delete/${id}`, 'get')
+        api.request(`books/${id}`, 'delete')
             .then(() => {
                 this.props.deleteBook(id);
             })

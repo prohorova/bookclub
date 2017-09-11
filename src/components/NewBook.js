@@ -17,7 +17,7 @@ export default class NewBook extends Component {
     submit() {
         if (this.state.book !== null) {
             this.setState({loading: true, errorMessage: ''});
-            api.request('books/add', 'post', this.items[this.state.book])
+            api.request('books', 'post', this.items[this.state.book])
                 .then((res) => {
                     this.setState({loading: false});
                     this.props.onAddBook(res.data);
